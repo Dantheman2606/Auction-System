@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Auction</title>
+</head>
+<body>
+  <h1>Place a Bid</h1>
+  <form id="bidForm">
+    <input type="text" id="user" placeholder="Your Name" required />
+    <input type="number" id="amount" placeholder="Bid Amount" required />
+    <button type="submit">Place Bid</button>
+  </form>
+
+  <h2>Live Bids:</h2>
+  <ul id="bidsList"></ul>
+
+  <!-- Socket.IO client from CDN -->
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script>
+    const socket = io("http://localhost:5000"); // Connect to backend
+
+    const form = document.getElementById("bidForm");
+    const bidsList = document.getElementById("bidsList");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const user = document.getElementById("user").value;
+      const amount = document.getElementById("amount").value;
+
+      const bid = {
+        user,
+        amount: parseFloat(amount),
+        time: new Date().toISOString()
+      };
+
+      // Send the bid to the backend
+      socket.emit("place_bid", bid);
+
+      form.reset();
+    });
+
+    // Receive new bids and display them
+    socket.on("new_bid", (bid) => {
+      const li = document.createElement("li");
+      li.textContent = `${bid.user} bid $${bid.amount} at ${new Date(bid.time).toLocaleTimeString()}`;
+      bidsList.prepend(li);
+    });
+  </script>
+</body>
+</html>
