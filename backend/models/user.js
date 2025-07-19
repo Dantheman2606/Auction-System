@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema({
 userSchema.pre('save', async function(next) {
 
   if(!this.isModified('password')) {
-    return next;
+    return next();
   }
 
   try {
@@ -60,11 +60,11 @@ userSchema.pre('save', async function(next) {
 
 });
 
-// pwd -> encrypted
+//pwd->encrypted
 
 
 userSchema.methods.comparePassword = async function (plainPassword) {
-  // console.log(this.password);
+  //console.log(this.password);
   return await bcrypt.compare(plainPassword, this.password);
 }
 
