@@ -1,5 +1,7 @@
-const getProfile = require('./getProfile')
+const deleteAcc = require('./deleteAcc');
+const getProfile = require('./getProfile');
 
 module.exports = {
-    getProfile,
-}
+    deleteAcc,
+    getProfile
+};

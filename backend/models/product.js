@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const imageUrls = new mongoose.Schema({
   url: { 
@@ -27,4 +27,5 @@ const productSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 const Product = mongoose.model('Product', productSchema, 'Product');
-export default Product;
+
+module.exports = Product;

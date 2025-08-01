@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const bidSchema = new mongoose.Schema({
     auctionId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -21,4 +20,6 @@ const bidSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("Bids", bidSchema, "Bids");
+const Bids = mongoose.model("Bids", bidSchema, "Bids");
+
+module.exports = Bids;
