@@ -28,8 +28,6 @@ const userInfo = async (req , res) => {
             msg : "Something went wrong is finding the user Id"
         })
     }
-    
-
 }
 
-module.exports = userInfo;
+module.exports = userInfo
