@@ -8,9 +8,9 @@ const updateProfile = async (req, res) => {
         // Validate input
         const user = await User.findById(userId);
 
-        console.log("Fetched user:", user);
+        // console.log("Fetched user:", user);
 
-        if (req.user.id !== userId) {
+        if (req.user_id.id !== userId) {
             return res.status(403).json({ msg: "Unauthorized" })
         }
 
