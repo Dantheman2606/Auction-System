@@ -25,12 +25,14 @@ const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const productRoutes = require('./routes/productRoutes');
+const auctionRoutes = require('./routes/auctionRoutes');
 
 // Use routes here
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/auctions', auctionRoutes);
 
 
 const PORT = process.env.PORT || 5001;
