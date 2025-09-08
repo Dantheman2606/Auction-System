@@ -31,6 +31,6 @@ const productSchema = new mongoose.Schema({
     default: Date.now }
 }, { timestamps: true });
 
-const Product = mongoose.model('Product', productSchema, 'Product');
+const Product = mongoose.model("Product", productSchema, "Product");
 
 module.exports = Product;
